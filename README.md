@@ -1,7 +1,3 @@
-<div align="center">
-<img width="1200" height="475" alt="SmartCrowd Banner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
-
 # SmartCrowd: Next-Generation Queue and Density Management
 
 SmartCrowd is a real-time queue and density management system designed to optimize guest flow and safety in massive scale venues. 
