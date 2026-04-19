@@ -1,0 +1,71 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "Registered application user for RBAC",
+      "type": "object",
+      "properties": {
+        "email": { "type": "string" },
+        "name": { "type": "string" },
+        "role": { "type": "string", "enum": ["admin", "guest"] },
+        "createdAt": { "type": "timestamp" }
+      },
+      "required": ["email", "name", "role", "createdAt"]
+    },
+    "Zone": {
+      "title": "Zone",
+      "description": "A specific location in the stadium",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "crowd": { "type": "number", "description": "Current crowd percentage/number" },
+        "updatedAt": { "type": "timestamp" }
+      },
+      "required": ["id", "name", "crowd"]
+    },
+    "Queue": {
+      "title": "Queue",
+      "description": "A food stall or gate queue",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "people": { "type": "number", "description": "Number of people waiting" },
+        "service_rate": { "type": "number", "description": "People processed per minute" },
+        "updatedAt": { "type": "timestamp" }
+      },
+      "required": ["id", "name", "people", "service_rate"]
+    },
+    "Alert": {
+      "title": "Alert",
+      "description": "A system broadcast or notification",
+      "type": "object",
+      "properties": {
+        "message": { "type": "string" },
+        "severity": { "type": "string" },
+        "timestamp": { "type": "timestamp" }
+      },
+      "required": ["message", "timestamp"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": { "$ref": "User" },
+      "description": "User profile with role"
+    },
+    "/zones/{zoneId}": {
+      "schema": { "$ref": "Zone" },
+      "description": "Stadium crowd zones"
+    },
+    "/queues/{queueId}": {
+      "schema": { "$ref": "Queue" },
+      "description": "Facility queues"
+    },
+    "/alerts/{alertId}": {
+      "schema": { "$ref": "Alert" },
+      "description": "Crowd management alerts"
+    }
+  }
+}
+
